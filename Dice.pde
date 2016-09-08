@@ -19,10 +19,10 @@ void draw()
 		}
 	}
 	fill(0);
-	textSize(30);
+	textSize(20);
 	text("Die Total: "+ dieTotal, 40, 550);
 	text("Rerolls: " + reRoll, 290, 550);
-	text("Die Average: " + (dieTotal/72), 40, 590);
+	text("Die Average: " + (float)(dieTotal/72), 40, 590);
 	text("Random Number: " + (int)(Math.random()*(99)), 290, 590);
 }
 void mousePressed()
