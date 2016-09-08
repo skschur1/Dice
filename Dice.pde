@@ -1,17 +1,19 @@
-int dieTotal, reRoll;
+int dieTotal, reRoll, dieRows, dieCollumns;
 void setup()
 {
 	size(600,600);
 	noLoop();
 	reRoll = 0;
+	dieRows = 4;
+	dieCollumns = 4;
 }
 void draw()
 {
 	dieTotal = 0;
 	background((int)(Math.random()*257) + 1, 200, 200);
-	for(int dieY = 30; dieY < 460; dieY += 60)
+	for(int dieY = 30; dieY < dieRows * 60; dieY += 60)
 	{
-		for(int dieX = 30; dieX < 550; dieX += 60)
+		for(int dieX = 30; dieX < dieCollumns * 60; dieX += 60)
 		{
 		Die bob = new Die(dieX, dieY);
 		bob.show();
@@ -22,7 +24,30 @@ void draw()
 	textSize(30);
 	text("Die Total: "+ dieTotal, 40, 550);
 	text("Rerolls: " + reRoll, 290, 550);
-	text("Die Average: " + (dieTotal/72), 40, 590);
+	text("Die Average: " + (dieTotal/(dieRows * dieCollumns)), 40, 590);
+}
+void keyPressed()
+{
+	if(keyCode == UP)
+	{
+		dieRows-=1;
+		redraw();
+	}
+	else if(keyCode == DOWN)
+	{
+		dieRows+=1;
+		redraw();
+	}
+	else if (keyCode == LEFT) 
+	{
+		dieCollumns-=1;
+		redraw();
+	}
+	else if (keyCode == RIGHT)
+	{
+		dieCollumns+=1;
+		redraw();
+	}
 }
 void mousePressed()
 {
