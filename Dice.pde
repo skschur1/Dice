@@ -1,11 +1,11 @@
-int dieTotal, reRoll, dieRows, dieCollumns;
+int dieTotal, reRoll, dieRows, dieColumns;
 void setup()
 {
 	size(600,600);
 	noLoop();
 	reRoll = 0;
 	dieRows = 4;
-	dieCollumns = 4;
+	dieColumns = 4;
 }
 void draw()
 {
@@ -13,7 +13,7 @@ void draw()
 	background((int)(Math.random()*257) + 1, 200, 200);
 	for(int dieY = 30; dieY < dieRows * 60; dieY += 60)
 	{
-		for(int dieX = 30; dieX < dieCollumns * 60; dieX += 60)
+		for(int dieX = 30; dieX < dieColumns * 60; dieX += 60)
 		{
 		Die bob = new Die(dieX, dieY);
 		bob.show();
@@ -22,30 +22,31 @@ void draw()
 	}
 	fill(0);
 	textSize(30);
-	text("Die Total: "+ dieTotal, 40, 550);
+	text("Dice Total: "+ dieTotal, 40, 550);
 	text("Rerolls: " + reRoll, 290, 550);
-	text("Die Average: " + (dieTotal/(dieRows * dieCollumns)), 40, 590);
+	text("Rows: " + dieRows, 40, 590);
+	text("Columns: " + dieColumns, 290, 590);
 }
 void keyPressed()
 {
-	if(keyCode == UP)
+	if(keyCode == UP && dieRows > 1)
 	{
 		dieRows-=1;
 		redraw();
 	}
-	else if(keyCode == DOWN)
+	else if(keyCode == DOWN && dieRows < 8)
 	{
 		dieRows+=1;
 		redraw();
 	}
-	else if (keyCode == LEFT) 
+	else if (keyCode == LEFT && dieColumns > 1) 
 	{
-		dieCollumns-=1;
+		dieColumns-=1;
 		redraw();
 	}
-	else if (keyCode == RIGHT)
+	else if (keyCode == RIGHT && dieColumns < 9)
 	{
-		dieCollumns+=1;
+		dieColumns+=1;
 		redraw();
 	}
 }
