@@ -1,11 +1,12 @@
-int dieTotal, reRoll, dieRows, dieColumns;
+int dieTotal, reRoll, dieRows, dieColumns, dieSize;
 void setup()
 {
-	size(600,600);
+	size(540,600);
 	noLoop();
 	reRoll = 0;
 	dieRows = 4;
 	dieColumns = 4;
+	dieSize = 4;
 }
 void draw()
 {
@@ -44,7 +45,7 @@ void keyPressed()
 		dieColumns-=1;
 		redraw();
 	}
-	else if (keyCode == RIGHT && dieColumns < 9)
+	else if (keyCode == RIGHT && dieColumns < 8)
 	{
 		dieColumns+=1;
 		redraw();
@@ -72,11 +73,11 @@ class Die //models one single dice cube
 	{
 		strokeWeight(1);
 		fill((int)(Math.random()*157) + 100, (int)(Math.random()*157) + 100, (int)(Math.random()*157) + 100);
-		rect(myX, myY, 50, 50);
+		rect(myX, myY, dieSize * 25, dieSize * 25, 10);
 		strokeWeight(10);
 		if (dieNum == 1)
 		{
-			point(myX + 24, myY + 24);
+			point(myX + 25, myY + 25);
 		}
 		else if(dieNum == 2)
 		{
@@ -87,7 +88,7 @@ class Die //models one single dice cube
 		{
 			point(myX + 11, myY + 11);
 			point(myX + 39, myY + 39);
-			point(myX + 24, myY + 24);
+			point(myX + 25, myY + 25);
 		}
 		else if(dieNum == 4)
 		{
@@ -102,15 +103,15 @@ class Die //models one single dice cube
 			point(myX + 11, myY + 39);
 			point(myX + 39, myY + 11);
 			point(myX + 39, myY + 39);
-			point(myX + 24, myY + 24);
+			point(myX + 25, myY + 25);
 		}
 		else
 		{
 			point(myX + 11, myY + 11);
-			point(myX + 11, myY + 24);
+			point(myX + 11, myY + 25);
 			point(myX + 11, myY + 39);
 			point(myX + 39, myY + 11);
-			point(myX + 39, myY + 24);
+			point(myX + 39, myY + 25);
 			point(myX + 39, myY + 39);
 		}
 	}
