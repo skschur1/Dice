@@ -1,4 +1,4 @@
-int dieTotal, reRoll, dieRows, dieColumns, dieSize;
+int dieTotal, reRoll, dieRows, dieColumns;
 void setup()
 {
 	size(540,600);
@@ -6,7 +6,6 @@ void setup()
 	reRoll = 0;
 	dieRows = 4;
 	dieColumns = 4;
-	dieSize = 4;
 }
 void draw()
 {
@@ -73,7 +72,7 @@ class Die //models one single dice cube
 	{
 		strokeWeight(1);
 		fill((int)(Math.random()*157) + 100, (int)(Math.random()*157) + 100, (int)(Math.random()*157) + 100);
-		rect(myX, myY, dieSize * 25, dieSize * 25, 10);
+		rect(myX, myY, 50, 50, 10);
 		strokeWeight(10);
 		if (dieNum == 1)
 		{
